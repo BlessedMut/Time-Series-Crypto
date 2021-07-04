@@ -1,4 +1,4 @@
-import mysql.connector as sql
+# import mysql.connector as sql
 import pandas as pd
 # from sklearn.preprocessing import MinMaxScaler
 # from keras.models import model_from_json
