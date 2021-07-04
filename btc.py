@@ -66,3 +66,4 @@ def btc_pred():
   return pred[-1][0]
 
 model = load_trained_model()
+tomorrow = btc_pred()
