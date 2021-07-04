@@ -110,13 +110,13 @@ def about():
     with m1:
         st.write("|")
     with r:
-        st.write('Rufaro Nyandoro - R182565F')
+        st.write('Rufaro Nyandoro - R1710732')
         st.write('rufarohazelnyandoro@gmail.com')
     with m2:
         st.write("|")
     with l:
-        st.write('Lyka  - R182565F')
-        st.write('lyka@gmail.com')
+        st.write('Laika Ali  - R178492M')
+        st.write('laikaali@gmail.com')
 
 
 def updates():
