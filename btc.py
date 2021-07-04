@@ -10,11 +10,6 @@ import numpy as np
 
 # test_data = pd.read_sql('SELECT * FROM btc_usdt', con=db_connection)
 
-test_data = pd.read_csv('./data/btc_usdt.csv', header=None)
-test_data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
-test_data['Date'] = pd.to_datetime(test_data['Date'])
-
-
 crypto_currency = 'BTC'
 base_currency = 'USD'
 
@@ -42,6 +37,9 @@ def get_test_data():
   data = get_train_data()[0]
   scaler = MinMaxScaler(feature_range=(0,1))
   test_start = "2018-01-01"
+  test_data = pd.read_csv('./data/btc_usdt.csv', header=None)
+  test_data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+  test_data['Date'] = pd.to_datetime(test_data['Date'])
   test_data = test_data.loc[test_data['Date']>=test_start]
   actual_values = test_data['Close'].values
   scaler = MinMaxScaler(feature_range=(0,1))
