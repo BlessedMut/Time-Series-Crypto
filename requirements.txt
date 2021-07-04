@@ -1,6 +1,7 @@
 pandas~=1.1.5
 streamlit
-MySQL
-mysql
+keras
+tensorflow
+sklearn
 yahoofinancials
 yfinance
