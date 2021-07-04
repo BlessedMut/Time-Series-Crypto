@@ -15,7 +15,7 @@ base_currency = 'USD'
 
 prediction_days = 60
 
-def get_train_data():
+def get_train_data(n_days):
   data = pd.read_csv('./data/btc_usdt.csv', header=None)
   data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
   data['Date'] = pd.to_datetime(data['Date'])
@@ -24,9 +24,14 @@ def get_train_data():
 
   x_train, y_train = [], []
 
-  for x in range(prediction_days, len(scaled_data)):
-    x_train.append(scaled_data[x-prediction_days:x, 0])
-    y_train.append(scaled_data[x, 0])
+  if n_days > 1:
+    for x in range(prediction_days, len(scaled_data)-n_days):
+      x_train.append(scaled_data[x-prediction_days:x, 0])
+      y_train.append(scaled_data[x+n_days, 0])
+  else:
+    for x in range(prediction_days, len(scaled_data)):
+      x_train.append(scaled_data[x-prediction_days:x, 0])
+      y_train.append(scaled_data[x, 0])
 
   x_train, y_train = np.array(x_train), np.array(y_train)
   x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1],1))
@@ -80,6 +85,3 @@ def btc_pred():
   pred = model.predict(r_data)
   pred = scaler.inverse_transform(pred)
   return pred[-1][0]
-
-model = load_trained_model()
-tomorrow = btc_pred()
