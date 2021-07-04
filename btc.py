@@ -19,6 +19,22 @@ base_currency = 'USD'
 
 prediction_days = 60
 
+def get_train_data():
+  data = get_crypto_data(f'{crypto_currency}/{base_currency}T', start_date, end_date)
+  scaler = MinMaxScaler(feature_range=(0,1))
+  scaled_data = scaler.fit_transform(data['close'].values.reshape(-1,1))
+
+  x_train, y_train = [], []
+
+  for x in range(prediction_days, len(scaled_data)):
+    x_train.append(scaled_data[x-prediction_days:x, 0])
+    y_train.append(scaled_data[x, 0])
+
+  x_train, y_train = np.array(x_train), np.array(y_train)
+  x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1],1))
+
+  return data, scaler, x_train, y_train
+
 def get_test_data():
   data = get_train_data()[0]
   scaler = MinMaxScaler(feature_range=(0,1))
