@@ -78,6 +78,8 @@ def load_trained_model():
     model.load_weights("./trained_models/btc_model.h5")
   return model
 
+model = load_trained_model()
+
 def btc_pred():
   model_inputs = get_test_data()[3]
   scaler = get_train_data()[1]
@@ -127,7 +129,6 @@ def updates():
     with d1:
         days = st.slider("Predict how many days in the future", min_value=1, max_value=15, step=1, value=1)
         get_train_data()
-        model = load_trained_model()
         tomorrow = btc_pred()
 
 
