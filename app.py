@@ -8,7 +8,6 @@ import os.path
 from tensorflow import keras
 import streamlit as st
 import numpy as np
-from app import days
 
 # db_connection = sql.connect(host='localhost', database='timeseries', user='root', password='')
 
