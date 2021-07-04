@@ -31,6 +31,7 @@ def about():
 
 
 def updates():
+    global days
     st.title("Market Updates")
 
     d1, d2 = st.beta_columns([3,6])
