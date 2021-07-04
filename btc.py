@@ -39,7 +39,7 @@ def get_train_data(n_days):
   return data, scaler, x_train, y_train
 
 def get_test_data():
-  data = get_train_data()[0]
+  data = get_train_data(n_days)[0]
   scaler = MinMaxScaler(feature_range=(0,1))
   test_start = "2018-01-01"
   test_data = pd.read_csv('./data/btc_usdt.csv', header=None)
