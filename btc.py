@@ -1,7 +1,7 @@
 # import mysql.connector as sql
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
-from keras.models import model_from_json
+from tensorflow.keras.models import model_from_json
 import os.path
 from tensorflow import keras
 import streamlit as st
