@@ -1,6 +1,7 @@
 import streamlit as st
 st.set_page_config(layout="wide")
 import pandas as pd
+from btc import tomorrow
 
 test_data = pd.read_csv('./data/btc_usdt.csv', header=None)
 test_data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
@@ -40,7 +41,7 @@ def updates():
     with d2:
         st.write("")
         st.write("")
-        st.markdown(f"The estimated price for {days} day(s) in the future is __$35000__")
+        st.markdown(f"The estimated price for {days} day(s) in the future is __${tomorrow:.2f}")
 
     plot_data = test_data[['Date','Close']]
 
