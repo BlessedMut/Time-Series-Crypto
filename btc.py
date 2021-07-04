@@ -46,11 +46,11 @@ def get_test_data():
   return x_test, pred_dates, actual_values, model_inputs, x_test, y_test
 
 def load_trained_model():
-  with open('./model/btc.json', 'r') as json_file:
+  with open('/model/btc.json', 'r') as json_file:
     model = model_from_json(json_file.read())
 
     # load weights into new model
-    model.load_weights("./model/btc.h5")
+    model.load_weights("/model/btc.h5")
   return model
 
 def btc_pred():
