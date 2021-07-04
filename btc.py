@@ -24,7 +24,7 @@ def get_train_data():
   data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
   data['Date'] = pd.to_datetime(test_data['Date'])
   scaler = MinMaxScaler(feature_range=(0,1))
-  scaled_data = scaler.fit_transform(data['close'].values.reshape(-1,1))
+  scaled_data = scaler.fit_transform(data['Close'].values.reshape(-1,1))
 
   x_train, y_train = [], []
 
