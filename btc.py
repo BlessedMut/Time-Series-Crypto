@@ -1,4 +1,3 @@
-# import mysql.connector as sql
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import model_from_json
@@ -46,11 +45,11 @@ def get_test_data():
   return x_test, pred_dates, actual_values, model_inputs, x_test, y_test
 
 def load_trained_model():
-  with open('btc.json', 'r') as json_file:
+  with open('./trained_models/btc.json', 'r') as json_file:
     model = model_from_json(json_file.read())
 
     # load weights into new model
-    model.load_weights("btc.h5")
+    model.load_weights("./trained_models/btc.h5")
   return model
 
 def btc_pred():
