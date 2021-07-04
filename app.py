@@ -126,7 +126,7 @@ def updates():
 
     with d1:
         days = st.slider("Predict how many days in the future", min_value=1, max_value=15, step=1, value=1)
-        get_train_data(days)
+        get_train_data()
         model = load_trained_model()
         tomorrow = btc_pred()
 
