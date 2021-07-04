@@ -20,7 +20,9 @@ base_currency = 'USD'
 prediction_days = 60
 
 def get_train_data():
-  data = get_crypto_data(f'{crypto_currency}/{base_currency}T', start_date, end_date)
+  data = pd.read_csv('./data/btc_usdt.csv', header=None)
+  data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+  data['Date'] = pd.to_datetime(test_data['Date'])
   scaler = MinMaxScaler(feature_range=(0,1))
   scaled_data = scaler.fit_transform(data['close'].values.reshape(-1,1))
 
