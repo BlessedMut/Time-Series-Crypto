@@ -49,7 +49,7 @@ def load_trained_model():
     model = model_from_json(json_file.read())
 
     # load weights into new model
-    model.load_weights("./trained_models/btc.h5")
+    model.load_weights("./trained_models/btc_model.h5")
   return model
 
 def btc_pred():
