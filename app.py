@@ -2,9 +2,9 @@ import streamlit as st
 st.set_page_config(layout="wide")
 import pandas as pd
 
-# test_data = pd.read_csv('./data/btc_usdt.csv', header=None)
-# test_data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
-# test_data['Date'] = pd.to_datetime(test_data['Date'])
+test_data = pd.read_csv('./data/btc_usdt.csv', header=None)
+test_data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+test_data['Date'] = pd.to_datetime(test_data['Date'])
 
 def about():
     st.title('Time Series Predictions for Crypto-Currencies')
