@@ -19,7 +19,6 @@ global days
 prediction_days = 60
 
 def get_train_data():
-  n_days = days
   data = pd.read_csv('./data/btc_usdt.csv', header=None)
   data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
   data['Date'] = pd.to_datetime(data['Date'])
@@ -28,10 +27,10 @@ def get_train_data():
 
   x_train, y_train = [], []
 
-  if n_days > 1:
-    for x in range(prediction_days, len(scaled_data)-n_days):
+  if days > 1:
+    for x in range(prediction_days, len(scaled_data)-days):
       x_train.append(scaled_data[x-prediction_days:x, 0])
-      y_train.append(scaled_data[x+n_days, 0])
+      y_train.append(scaled_data[x+days, 0])
   else:
     for x in range(prediction_days, len(scaled_data)):
       x_train.append(scaled_data[x-prediction_days:x, 0])
