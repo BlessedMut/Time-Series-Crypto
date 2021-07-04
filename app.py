@@ -134,7 +134,8 @@ def updates():
     with d2:
         st.write("")
         st.write("")
-        st.markdown(f"The estimated price for {days} day(s) in the future is __${tomorrow:.2f}__")
+        pred = st.empty()
+        pred.markdown(f"The estimated price for {days} day(s) in the future is __${tomorrow:.2f}__")
 
     plot_data = test_data[['Date','Close']]
 
