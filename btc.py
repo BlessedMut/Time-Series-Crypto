@@ -5,6 +5,7 @@ import os.path
 from tensorflow import keras
 import streamlit as st
 import numpy as np
+from app import days
 
 # db_connection = sql.connect(host='localhost', database='timeseries', user='root', password='')
 
@@ -15,7 +16,8 @@ base_currency = 'USD'
 
 prediction_days = 60
 
-def get_train_data(n_days):
+def get_train_data():
+  n_days = days
   data = pd.read_csv('./data/btc_usdt.csv', header=None)
   data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
   data['Date'] = pd.to_datetime(data['Date'])
@@ -39,7 +41,7 @@ def get_train_data(n_days):
   return data, scaler, x_train, y_train
 
 def get_test_data():
-  data = get_train_data(n_days)[0]
+  data = get_train_data()[0]
   scaler = MinMaxScaler(feature_range=(0,1))
   test_start = "2018-01-01"
   test_data = pd.read_csv('./data/btc_usdt.csv', header=None)
