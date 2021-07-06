@@ -57,7 +57,7 @@ def get_test_data():
 #   test_data = pd.read_csv('./data/btc_usdt.csv', header=None)
 #   test_data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
 #   test_data['Date'] = pd.to_datetime(test_data['Date'])
-  test_data = data.loc[data['Date']>=test_start]
+  test_data = data.loc[data.index>=test_start]
   test_start = "2018-01-01"
   test_end = dt.datetime.strftime(dt.datetime.now(), "%Y-%m-%d")
   test_data = yf.download(f'{crypto_currency}-{base_currency}', 
