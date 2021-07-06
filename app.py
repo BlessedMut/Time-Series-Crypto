@@ -165,17 +165,23 @@ def updates():
 def recommendations():
     st.title("Market Recommendations")
 
-    col1, col2 = st.beta_columns([8,3])
+    col1, col2, col3 = st.beta_columns([3,8,3])
 
-    with col1:
-        st.dataframe(test_data)
+    crypto = ['BTC-USD', 'ETH-USD', 'USDT-USD', 'BNB-USD', 'ADA-USD', 'DOGE-USD']
 
-    with col2:
-        crypto = st.selectbox(
-                'Select Crypto-Currency',
-                ['BTC', 'ETH', 'PI', 'DGE']
-            )
+    yahoo_financials = YahooFinancials(crypto)
 
+    d = yahoo_financials.get_historical_price_data(start_date='2021-06-29', 
+                                                      end_date=dt.datetime.strftime(dt.datetime.now(), "%Y-%m-%d"), 
+                                                      time_interval='weekly')
+    prices_df = pd.DataFrame({
+    a: {x['formatted_date']: x['adjclose'] for x in d[a]['prices']} for a in crypto
+    })
+    
+    with col3:
+      st.dataframe(prices_df)
+    
+    
 def main():
     app = st.sidebar.selectbox(
                 'Navigation',
