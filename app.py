@@ -190,7 +190,7 @@ def recommendations():
     table1, table2, table3 = st.beta_columns(3)
     
     for i, (k, v) in enumerate(summary.items()):
-      with str(table)+str(i+1):
+      with 'table'+str(i+1):
         st.dataframe((pd.Series(v).to_frame(str(k))))
     
 def main():
