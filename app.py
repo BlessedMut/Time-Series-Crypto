@@ -8,6 +8,8 @@ import os.path
 from tensorflow import keras
 import streamlit as st
 import numpy as np
+import yfinance as yf
+from yahoofinancials import YahooFinancials
 
 # db_connection = sql.connect(host='localhost', database='timeseries', user='root', password='')
 
