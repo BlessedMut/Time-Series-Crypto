@@ -179,6 +179,7 @@ def recommendations():
     })
     
     with col2:
+      st.subheader('Historical Price Data')
       st.dataframe(prices_df)
     
     
