@@ -195,11 +195,14 @@ def recommendations():
       df[i] = (pd.Series(v).to_frame(str(k)))
       
     with table1:
-      st.dataframe(df[0])
+      tb1 = st.empty()
+      tb1.dataframe(df[0])
     with table2:
-      st.dataframe(df[1])
+      tb2 = st.empty()
+      tb2.dataframe(df[1])
     with table3:
-      st.dataframe(df[2])
+      tb3 = st.empty()
+      tb3.dataframe(df[2])
     
 def main():
     app = st.sidebar.selectbox(
