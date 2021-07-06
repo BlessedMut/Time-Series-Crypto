@@ -182,6 +182,15 @@ def recommendations():
       st.subheader('Historical Price Data')
       st.dataframe(prices_df)
     
+    crypto = ['BTC-USD', 'ETH-USD', 'DOGE-USD']
+
+    yahoo_financials_crypto = YahooFinancials(crypto)
+    summary = yahoo_financials_crypto.get_summary_data()
+    
+    table1, table2, table3 = st.beta_columns()
+    
+    for i, (k, v) in enumerate(summary.items()):
+      st.dataframe((pd.Series(v).to_frame(str(k))))
     
 def main():
     app = st.sidebar.selectbox(
