@@ -178,7 +178,7 @@ def recommendations():
     a: {x['formatted_date']: x['adjclose'] for x in d[a]['prices']} for a in crypto
     })
     
-   st.subheader('Historical Price Data')
+    st.subheader('Historical Price Data')
           
     with col2:
       st.dataframe(prices_df)
