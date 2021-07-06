@@ -187,7 +187,7 @@ def recommendations():
     yahoo_financials_crypto = YahooFinancials(crypto)
     summary = yahoo_financials_crypto.get_summary_data()
     
-    table1, table2, table3 = st.beta_columns(3)
+    table1, table2, table3 = st.beta_columns(2)
     
     df = ['df1', 'df2', 'df3']
 
