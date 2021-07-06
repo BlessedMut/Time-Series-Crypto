@@ -165,7 +165,7 @@ def updates():
 def recommendations():
     st.title("Market Recommendations")
 
-    col1, col2, col3 = st.beta_columns([1,8,1)
+    col1, col2, col3 = st.beta_columns([1,8,1])
 
     crypto = ['BTC-USD', 'ETH-USD', 'USDT-USD', 'BNB-USD', 'ADA-USD', 'DOGE-USD']
 
