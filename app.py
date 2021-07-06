@@ -189,9 +189,17 @@ def recommendations():
     
     table1, table2, table3 = st.beta_columns(3)
     
+    df = ['df1', 'df2', 'df3']
+
     for i, (k, v) in enumerate(summary.items()):
-      with 'table'+str(i+1):
-        st.dataframe((pd.Series(v).to_frame(str(k))))
+      df[i] = (pd.Series(v).to_frame(str(k)))
+      
+    with table1:
+      st.dataframe(df[0])
+    with table2:
+      st.dataframe(df[1])
+    with table3:
+      st.dataframe(df[2])
     
 def main():
     app = st.sidebar.selectbox(
