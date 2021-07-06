@@ -187,9 +187,9 @@ def recommendations():
     yahoo_financials_crypto = YahooFinancials(crypto)
     summary = yahoo_financials_crypto.get_summary_data()
     
-    table1, table2 = st.beta_columns([5,5])
+    table1, table2, table3 = st.beta_columns(3)
     
-    df = ['df1', 'df2']
+    df = ['df1', 'df2', 'df3']
 
     for i, (k, v) in enumerate(summary.items()):
       df[i] = (pd.Series(v).to_frame(str(k)))
@@ -200,6 +200,9 @@ def recommendations():
     with table2:
       tb2 = st.empty()
       tb2.dataframe(df[1])
+    with table3:
+      tb2 = st.empty()
+      tb2.dataframe(df[2])
 
     
 def main():
