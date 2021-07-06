@@ -61,8 +61,8 @@ def get_test_data():
     for x in range(prediction_days, len(model_inputs)):
       x_test.append(model_inputs[x-prediction_days:x, 0])
       y_test.append(model_inputs[x, 0])
- else:
-  for x in range(prediction_days, len(model_inputs)-30):
+  else:
+    for x in range(prediction_days, len(model_inputs)-30):
       x_test.append(model_inputs[x-prediction_days:x, 0])
       y_test.append(model_inputs[x+30, 0])
     
