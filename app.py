@@ -20,6 +20,9 @@ base_currency = 'USD'
 global days
 prediction_days = 60
 
+start_date =  dt.datetime(2014,9,17)
+end_date = dt.datetime.now()
+
 def get_train_data():
 #   data = pd.read_csv('./data/btc_usdt.csv', header=None)
 #   data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
