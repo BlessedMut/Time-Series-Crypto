@@ -19,9 +19,13 @@ global days
 prediction_days = 60
 
 def get_train_data():
-  data = pd.read_csv('./data/btc_usdt.csv', header=None)
-  data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
-  data['Date'] = pd.to_datetime(data['Date'])
+#   data = pd.read_csv('./data/btc_usdt.csv', header=None)
+#   data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+#   data['Date'] = pd.to_datetime(data['Date'])
+  data = yf.download(f'{crypto_currency}-{base_currency}', 
+                      start=start_date, 
+                      end=end_date, 
+                      progress=False,)
   scaler = MinMaxScaler(feature_range=(0,1))
   scaled_data = scaler.fit_transform(data['Close'].values.reshape(-1,1))
 
@@ -42,11 +46,17 @@ def get_train_data():
 def get_test_data():
   data = get_train_data()[0]
   scaler = MinMaxScaler(feature_range=(0,1))
+#   test_start = "2018-01-01"
+#   test_data = pd.read_csv('./data/btc_usdt.csv', header=None)
+#   test_data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
+#   test_data['Date'] = pd.to_datetime(test_data['Date'])
+#   test_data = test_data.loc[test_data['Date']>=test_start]
   test_start = "2018-01-01"
-  test_data = pd.read_csv('./data/btc_usdt.csv', header=None)
-  test_data.columns = ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']
-  test_data['Date'] = pd.to_datetime(test_data['Date'])
-  test_data = test_data.loc[test_data['Date']>=test_start]
+  test_end = dt.datetime.strftime(dt.datetime.now(), "%Y-%m-%d")
+  test_data = yf.download(f'{crypto_currency}-{base_currency}', 
+                      start=test_start, 
+                      end=test_end, 
+                      progress=False,)
   actual_values = test_data['Close'].values
   scaler = MinMaxScaler(feature_range=(0,1))
   scaled_data = scaler.fit_transform(actual_values.reshape(-1,1))
