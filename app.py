@@ -169,7 +169,7 @@ def recommendations():
     
     col1, col2, col3 = st.beta_columns([1,10,1])
 
-    crypto = ['BTC-USD', 'ETH-USD', 'USDT-USD', 'BNB-USD', 'ADA-USD', 'DOGE-USD']
+    crypto = ['BTC-USD', 'ETH-USD', 'USDT-USD', 'BNB-USD', 'ADA-USD', 'DOGE-USD', 'THETA-USD', 'LTC-USD', 'VET-USD', 'TRX-USD']
 
     yahoo_financials = YahooFinancials(crypto)
 
