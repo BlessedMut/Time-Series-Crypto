@@ -178,11 +178,13 @@ def recommendations():
     a: {x['formatted_date']: x['adjclose'] for x in d[a]['prices']} for a in crypto
     })
     
-    with col2:
+    with col1:
       st.subheader('Historical Price Data')
+          
+    with col2:
       st.dataframe(prices_df)
     
-    crypto = ['BTC-USD', 'ETH-USD']
+    crypto = ['BTC-USD', 'ETH-USD', 'DOGE-USD']
 
     yahoo_financials_crypto = YahooFinancials(crypto)
     summary = yahoo_financials_crypto.get_summary_data()
@@ -193,7 +195,8 @@ def recommendations():
 
     for i, (k, v) in enumerate(summary.items()):
       df[i] = (pd.Series(v).to_frame(str(k)))
-      
+     
+    st.markdown('Comparing __BTC-USD__ to _ETH-USD_ & _DOGE-USD_')
     with table1:
       tb1 = st.empty()
       tb1.dataframe(df[0])
