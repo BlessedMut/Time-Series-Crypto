@@ -164,7 +164,9 @@ def updates():
 
 def recommendations():
     st.title("Market Recommendations")
-
+    
+    st.subheader('Historical Price Data')
+    
     col1, col2, col3 = st.beta_columns([1,8,1])
 
     crypto = ['BTC-USD', 'ETH-USD', 'USDT-USD', 'BNB-USD', 'ADA-USD', 'DOGE-USD']
@@ -177,9 +179,7 @@ def recommendations():
     prices_df = pd.DataFrame({
     a: {x['formatted_date']: x['adjclose'] for x in d[a]['prices']} for a in crypto
     })
-    
-    st.subheader('Historical Price Data')
-          
+              
     with col2:
       st.dataframe(prices_df)
     
