@@ -27,14 +27,12 @@ def get_train_data():
 
   x_train, y_train = [], []
 
-  if days > 1:
-    for x in range(prediction_days, len(scaled_data)-days):
-      x_train.append(scaled_data[x-prediction_days:x, 0])
-      y_train.append(scaled_data[x+days, 0])
-  else:
-    for x in range(prediction_days, len(scaled_data)):
-      x_train.append(scaled_data[x-prediction_days:x, 0])
-      y_train.append(scaled_data[x, 0])
+  for x in range(prediction_days, len(scaled_data)):
+    x_train.append(scaled_data[x-prediction_days:x, 0])
+    y_train.append(scaled_data[x, 0])
+
+  x_train, y_train = np.array(x_train), np.array(y_train)
+  x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1],1))
 
   x_train, y_train = np.array(x_train), np.array(y_train)
   x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1],1))
@@ -59,10 +57,15 @@ def get_test_data():
 
   x_test, y_test = [], []
 
-  for x in range(prediction_days, len(model_inputs)):
-    x_test.append(model_inputs[x-prediction_days:x, 0])
-    y_test.append(model_inputs[x, 0])
-
+  if days > 1:
+    for x in range(prediction_days, len(scaled_data)-days):
+      x_train.append(scaled_data[x-prediction_days:x, 0])
+      y_train.append(scaled_data[x+days, 0])
+  else:
+    for x in range(prediction_days, len(scaled_data)):
+      x_train.append(scaled_data[x-prediction_days:x, 0])
+      y_train.append(scaled_data[x, 0])
+      
   x_test, y_test = np.array(x_test), np.array(y_test)
   x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1],1))
 
